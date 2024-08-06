@@ -57,8 +57,8 @@ public class AliView implements ApplicationListener{
 	private static final String LF = System.getProperty("line.separator");
 	private static final AliViewJMenuBarFactory menuBarFactory = new AliViewJMenuBarFactory();
 	private static AliView aliView;
-	private static ArrayList<AliViewWindow> aliViewWindows = new ArrayList<AliViewWindow>();
-	private static AliViewWindow activeWindow = null;
+	private static ArrayList<AliViewWindowD> aliViewWindows = new ArrayList<AliViewWindowD>();
+	private static AliViewWindowD activeWindow = null;
 	private static final Logger logger = Logger.getLogger(AliView.class);
 	private static File savedInitialArgumentAlignmentForMac = null;
 	private static boolean debugMode = false;
@@ -376,7 +376,7 @@ public class AliView implements ApplicationListener{
 			//			if(OSNativeUtils.isMac() && alignmentFile != null){
 			//				logger.info("6.1");
 			//				savedInitialArgumentAlignmentFileForMac = alignmentFile;
-			//				// application AliView.createNewAliViewWindow will be called automatic in MacOS
+			//				// application AliView.createNewAliViewWindowD will be called automatic in MacOS
 			//				// via method handle open application
 			//				logger.info("6.2");
 			//			}
@@ -385,10 +385,10 @@ public class AliView implements ApplicationListener{
 
 			// for all non mac systems start here
 			if(! OSNativeUtils.isMac()){	
-				AliView.createNewAliViewWindow(alignmentFile);
+				AliView.createNewAliViewWindowD(alignmentFile);
 				// Nowadays mac is started same way
 			}else if(OSNativeUtils.isMac()){	
-				AliView.createNewAliViewWindow(alignmentFile);
+				AliView.createNewAliViewWindowD(alignmentFile);
 			}
 
 			// Create Application Adapter (only needed for OsX and register this AliView as listener of Application events (interface below)
@@ -497,7 +497,7 @@ public class AliView implements ApplicationListener{
 
 				activeWindow.loadNewAlignmentFile(alignmentFile);
 			}else{
-				createNewAliViewWindow(alignmentFile);
+				createNewAliViewWindowD(alignmentFile);
 			}
 			Settings.putLoadAlignmentDirectory(alignmentFile.getAbsoluteFile().getParent());
 			Settings.addRecentFile(alignmentFile);
@@ -515,7 +515,7 @@ public class AliView implements ApplicationListener{
 
 	private static boolean hasNonEmptyWindows() {
 		boolean hasNonEmptyWin = false;
-		for(AliViewWindow aliWin: aliViewWindows){
+		for(AliViewWindowD aliWin: aliViewWindows){
 			if(aliWin != null && !aliWin.isEmpty()){
 				hasNonEmptyWin = true;
 			}
@@ -525,18 +525,18 @@ public class AliView implements ApplicationListener{
 
 	public static void createNewWindow() {
 		logger.info("new win");
-		createNewAliViewWindow(null);
+		createNewAliViewWindowD(null);
 	}
 
-	public static AliViewWindow getActiveWindow(){
+	public static AliViewWindowD getActiveWindow(){
 		return activeWindow;
 	}
 
-	private static void createNewAliViewWindow(final File alignmentFile){
+	private static void createNewAliViewWindowD(final File alignmentFile){
 
 		try {
 
-			AliViewWindow newWin = new AliViewWindow(alignmentFile,menuBarFactory);
+			AliViewWindowD newWin = new AliViewWindowD(alignmentFile,menuBarFactory);
 
 			newWin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			newWin.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -545,18 +545,18 @@ public class AliView implements ApplicationListener{
 			newWin.addWindowListener(new WindowAdapter() {
 
 				public void windowActivated(java.awt.event.WindowEvent e) {
-					AliViewWindow thisWin = (AliViewWindow) e.getWindow();
+					AliViewWindowD thisWin = (AliViewWindowD) e.getWindow();
 					activeWindow = thisWin;
 					logger.info("window activated");
 				}
 
 				public void windowClosing(WindowEvent e) {
-					AliViewWindow thisWin = (AliViewWindow) e.getWindow();
+					AliViewWindowD thisWin = (AliViewWindowD) e.getWindow();
 					AliView.closeWindow(thisWin);
 				}
 
 				public void windowOpened(WindowEvent e) {
-					AliViewWindow thisWin = (AliViewWindow) e.getWindow();
+					AliViewWindowD thisWin = (AliViewWindowD) e.getWindow();
 
 					// Show dialog if sequence type was not detected
 					if(thisWin.getAlignment() != null && !thisWin.getAlignment().isEmptyAlignment() &&  thisWin.getAlignment().isUnknownAlignment()){
@@ -604,7 +604,7 @@ public class AliView implements ApplicationListener{
 
 	}
 
-	public static void closeWindow(AliViewWindow thisWin) {
+	public static void closeWindow(AliViewWindowD thisWin) {
 		boolean isCloseOK = thisWin.requestWindowClose();
 
 		if(isCloseOK){
@@ -637,7 +637,7 @@ public class AliView implements ApplicationListener{
 		} 
 	}
 
-	private static void placeWithinDesktop(AliViewWindow newWin) {
+	private static void placeWithinDesktop(AliViewWindowD newWin) {
 
 		logger.debug("Inside placeWithinDesktop");
 
@@ -661,7 +661,7 @@ public class AliView implements ApplicationListener{
 		// close all windows (ask if it is OK)
 		// reverse order since that is order you windows opened
 		for(int n = aliViewWindows.size() - 1; n >= 0; n--){
-			AliViewWindow window = aliViewWindows.get(n);		
+			AliViewWindowD window = aliViewWindows.get(n);		
 			boolean isCloseOK = window.requestWindowClose();
 			if(isCloseOK){
 				window.dispose();
@@ -753,9 +753,9 @@ public class AliView implements ApplicationListener{
 		// check if file arguments this is if argument is passed to Mac on command line and not in Finder "open file with..." if
 		// open from finder or dropped, file name is passed with a call to handleOpenFile (or in the file dropped handler)
 		if(savedInitialArgumentAlignmentFileForMac != null){
-			AliView.createNewAliViewWindow(savedInitialArgumentAlignmentFileForMac);
+			AliView.createNewAliViewWindowD(savedInitialArgumentAlignmentFileForMac);
 		}else{
-			AliView.createNewAliViewWindow(null);	
+			AliView.createNewAliViewWindowD(null);	
 		}
 		 */
 		event.setHandled(true);
