@@ -4,7 +4,7 @@ public class AliViewWindowD extends AliViewWindow {
 
 
   public AliViewWindow(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
-        super(alignmentFile, menuBarFactory);
+    return super(alignmentFile, menuBarFactory);
   }
 
   public void zoomInAt(Point mousePos){
