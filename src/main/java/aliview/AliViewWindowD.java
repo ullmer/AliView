@@ -1,12 +1,15 @@
 package aliview;
 
 import java.io.File;
+import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
 
 public class AliViewWindowD extends AliViewWindow {
+  private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
 
   public AliViewWindowD(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
     super(alignmentFile, menuBarFactory);
+    loggerD.info("AliViewWindowD invoked");
   }
 
 /*
