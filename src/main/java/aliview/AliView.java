@@ -528,7 +528,7 @@ public class AliView implements ApplicationListener{
 		createNewAliViewWindowD(null);
 	}
 
-	public static AliViewWindowD getActiveWindow(){
+	public static AliViewWindow getActiveWindow(){
 		return activeWindow;
 	}
 
