@@ -3,7 +3,7 @@ package aliview;
 public class AliViewWindowD extends AliViewWindow {
 
 
-  public AliViewWindow(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
+  public AliViewWindowD(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
     return super(alignmentFile, menuBarFactory);
   }
 
