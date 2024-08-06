@@ -14,7 +14,7 @@ public class AliViewWindowD extends AliViewWindow {
 
   public void moveCursorUp(boolean isShiftDown)    {super.moveCursorUp(isShiftDown);    loggerD.info("AVWD moveCursorUp");}
   public void moveCursorDown(boolean isShiftDown)  {super.moveCursorDown(isShiftDown);  loggerD.info("AVWD moveCursorDown");}
-  public void moveCursorLeft(boolean isShiftDown)  {super.moveCusorLeft(isShiftDown);   loggerD.info("AVWD moveCursorLeft");}
+  public void moveCursorLeft(boolean isShiftDown)  {super.moveCursorLeft(isShiftDown);  loggerD.info("AVWD moveCursorLeft");}
   public void moveCursorRight(boolean isShiftDown) {super.moveCursorRight(isShiftDown); loggerD.info("AVWD moveCursorRight");}
 
 /*
