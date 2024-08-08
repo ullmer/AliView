@@ -417,7 +417,8 @@ public class AliViewWindow extends JFrame implements UndoControler, AlignmentLis
 
 	}
 
-	private void initWindow(Alignment newAlignment) {
+	//private void initWindow(Alignment newAlignment) {
+	protected void initWindow(Alignment newAlignment) {
 		logger.info("inside init()");
 
 		//Color COLORSCHEME_BACKGROUND = Settings.getColorSchemeNucleotide().getBaseBackgroundColor(NucleotideUtilities.GAP);

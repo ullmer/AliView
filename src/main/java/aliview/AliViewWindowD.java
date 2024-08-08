@@ -20,7 +20,8 @@ public class AliViewWindowD extends AliViewWindow {
   public void moveCursorLeft(boolean isShiftDown)  {super.moveCursorLeft(isShiftDown);  loggerD.info("AVWD moveCursorLeft");}
   public void moveCursorRight(boolean isShiftDown) {super.moveCursorRight(isShiftDown); loggerD.info("AVWD moveCursorRight");}
 
-  private void initWindow(Alignment newAlignment) {
+  //private void initWindow(Alignment newAlignment) {
+  protected void initWindow(Alignment newAlignment) {
     loggerD.info("AliViewWindowD initWindow intercept called");
     super.initWindow(newAlignment);
     scrollBarListenerD = new ScrollBarModelSyncChangeListenerD(listScrollPane.getVerticalScrollBar().getModel());
