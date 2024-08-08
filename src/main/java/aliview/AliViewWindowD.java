@@ -1,6 +1,9 @@
 package aliview;
 
 import java.io.File;
+
+import javax.swing.AbstractAction;
+
 import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
 import aliview.alignment.Alignment;
