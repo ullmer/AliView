@@ -604,7 +604,7 @@ public class AliView implements ApplicationListener{
 
 	}
 
-	public static void closeWindow(AliViewWindowD thisWin) {
+	public static void closeWindow(AliViewWindow thisWin) {
 		boolean isCloseOK = thisWin.requestWindowClose();
 
 		if(isCloseOK){
