@@ -3,6 +3,7 @@ package aliview;
 import java.io.File;
 import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
+import aliview.alignment.Alignment;
 
 public class AliViewWindowD extends AliViewWindow {
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
