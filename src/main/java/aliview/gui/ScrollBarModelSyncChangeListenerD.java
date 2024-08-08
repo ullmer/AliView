@@ -12,6 +12,7 @@ package aliview.gui;
  */
 public class ScrollBarModelSyncChangeListenerD extends ScrollBarModelSyncChangeListener
 {
+   public ScrollBarModelSyncChangeListenerD( BoundedRangeModel model ) { super.model(); }
    public void stateChanged( ChangeEvent e ){
       System.out.println("ScrollBarModelSyncChangeListenerD stateChanged:" + e);
       super.stateChanged(e);
