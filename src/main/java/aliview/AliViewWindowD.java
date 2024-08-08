@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
 
 public class AliViewWindowD extends AliViewWindow {
+  private 
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
 
   public AliViewWindowD(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
@@ -16,6 +17,13 @@ public class AliViewWindowD extends AliViewWindow {
   public void moveCursorDown(boolean isShiftDown)  {super.moveCursorDown(isShiftDown);  loggerD.info("AVWD moveCursorDown");}
   public void moveCursorLeft(boolean isShiftDown)  {super.moveCursorLeft(isShiftDown);  loggerD.info("AVWD moveCursorLeft");}
   public void moveCursorRight(boolean isShiftDown) {super.moveCursorRight(isShiftDown); loggerD.info("AVWD moveCursorRight");}
+
+  private void initWindow(Alignment newAlignment) {
+    super.initWindow(newAlignment);
+    scrollBarListenerD = new ScrollBarModelSyncChangeListenerD(listScrollPane.getVerticalScrollBar().getModel());
+    alignmentScrollPane.getVerticalScrollBar().getModel().addChangeListener( scrollBarListenerD );
+    sequenceJList.addSynchPanes(listScrollPane, alignmentScrollPane);
+  }
 
 /*
   public void zoomInAt(Point mousePos){
