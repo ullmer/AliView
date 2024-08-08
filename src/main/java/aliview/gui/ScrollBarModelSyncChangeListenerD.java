@@ -1,6 +1,8 @@
 package aliview.gui;
 
-
+import javax.swing.BoundedRangeModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *        Synchronize the data models of any two JComponents that use a
