@@ -41,7 +41,7 @@ public class AliViewWindowD extends AliViewWindow {
 
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
   
-  private ScrollBarModelSyncChangeListenerD scrollBarListenerD;
+  //private ScrollBarModelSyncChangeListenerD scrollBarListenerD; // compile issues 2024-09-21
 
   //////////////////// constructor //////////////////// 
 
