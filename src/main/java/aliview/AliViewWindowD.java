@@ -1,3 +1,8 @@
+// Extensions to AliViewWindow to provide distributed & Py4j functionalities
+// Brygg Ullmer, Clemson University
+// Begun 2024-08-05
+// Py4J extensions begun 2024-09-20
+
 package aliview;
 
 import java.io.File;
