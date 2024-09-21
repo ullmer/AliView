@@ -20,10 +20,18 @@ import java.net.UnknownHostException;
 
 public class AliViewWindowD extends AliViewWindow {
   protected boolean py4jActivated = true;
+  protected boolean verbose       = true;
+  protected String         p4jServerIpAddressStr = "172.25.49.14"; // obviously requires more graceful integration 
+  protected InetAddress    p4jServerIpAddress;
+  protected GatewayServer  p4jGwServer;
+  protected CallbackClient p4jCbClient;
+  protected Logger         loggerP4J;
 
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
   
   private ScrollBarModelSyncChangeListenerD scrollBarListenerD;
+
+  //////////////////// constructor //////////////////// 
 
   public AliViewWindowD(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
     super(alignmentFile, menuBarFactory);
@@ -32,8 +40,30 @@ public class AliViewWindowD extends AliViewWindow {
     if (py4jActivated) {launchPy4jServer();}
   }
 
-  public void launchPy4jServer() {
+  //////////////////// AliView Window : Distributed & Py4j extensions (perhaps rename with DP suffix) //////////////////// 
 
+  public void launchPy4jServer() {
+    try {
+      if (verbose) {
+        loggerP4J = Logger.getLogger("py4j");
+        loggerPRJ.setLevel(Level.ALL);
+      }
+
+      p4jServerIpAddress = InetAddress.getByName(this.p4jServerIpAddressStr);
+      p4jCbClient        = new CallbackClient(GatewayServer.DEFAULT_PYTHON_PORT,
+        InetAddress.getByName(CallbackClient.DEFAULT_ADDRESS), 2, TimeUnit.SECONDS);
+
+      p4jGwServer = new GatewayServer(this, 25333, this.p4jServerIpAddress,
+         GatewayServer.DEFAULT_CONNECT_TIMEOUT, GatewayServer.DEFAULT_READ_TIMEOUT,
+         null, p4jCbClient);
+
+      if (verbose) { p4jGwServer.turnLoggingOn(); }
+
+      p4jGwServer.start();
+      return true; // successfully started
+
+    } catch (Exception e) {err("initP4j exception: "); e.printStackTrace(System.out); System.exit(-1);}
+    return false;
   }
 
   public void moveCursorUp(boolean isShiftDown)    {super.moveCursorUp(isShiftDown);    loggerD.info("AVWD moveCursorUp");}
