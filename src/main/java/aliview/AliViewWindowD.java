@@ -10,10 +10,15 @@ import java.io.File;
 import javax.swing.Action;
 import javax.swing.AbstractAction;
 
-import org.apache.log4j.Logger;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import aliview.gui.AliViewJMenuBarFactory;
 import aliview.alignment.Alignment;
+
 import java.util.concurrent.TimeUnit;
+
+import org.apache.log4j.Logger;
 //import java.util.logging.*;
 
 import py4j.Gateway;
