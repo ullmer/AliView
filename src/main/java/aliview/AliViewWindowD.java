@@ -13,6 +13,8 @@ import javax.swing.AbstractAction;
 import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
 import aliview.alignment.Alignment;
+import java.util.concurrent.TimeUnit;
+//import java.util.logging.*;
 
 import py4j.Gateway;
 import py4j.GatewayServer;
@@ -50,11 +52,11 @@ public class AliViewWindowD extends AliViewWindow {
 
   //////////////////// AliView Window : Distributed & Py4j extensions (perhaps rename with DP suffix) //////////////////// 
 
-  public void launchPy4jServer() {
+  public boolean launchPy4jServer() {
     try {
       if (verbose) {
         loggerP4J = Logger.getLogger("py4j");
-        loggerPRJ.setLevel(Level.ALL);
+        //loggerPRJ.setLevel(Level.ALL);
       }
 
       p4jServerIpAddress = InetAddress.getByName(this.p4jServerIpAddressStr);
