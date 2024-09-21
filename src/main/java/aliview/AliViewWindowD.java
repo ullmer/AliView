@@ -45,6 +45,9 @@ public class AliViewWindowD extends AliViewWindow {
     if (py4jActivated) {launchPy4jServer();}
   }
 
+  public void err(String msg) {System.out.println("AliViewWindowD error: " + msg);} // probably remap to Logger
+  public void msg(String msg) {System.out.println("AliViewWindowD msg: "   + msg);}
+
   //////////////////// AliView Window : Distributed & Py4j extensions (perhaps rename with DP suffix) //////////////////// 
 
   public void launchPy4jServer() {
@@ -62,12 +65,12 @@ public class AliViewWindowD extends AliViewWindow {
          GatewayServer.DEFAULT_CONNECT_TIMEOUT, GatewayServer.DEFAULT_READ_TIMEOUT,
          null, p4jCbClient);
 
-      if (verbose) { p4jGwServer.turnLoggingOn(); }
+      //if (verbose) { p4jGwServer.turnLoggingOn(); }
 
       p4jGwServer.start();
       return true; // successfully started
 
-    } catch (Exception e) {err("initP4j exception: "); e.printStackTrace(System.out); System.exit(-1);}
+    } catch (Exception e) {err("AliViewWindowD launchPy4jServer exception: "); e.printStackTrace(System.out); System.exit(-1);}
     return false;
   }
 
