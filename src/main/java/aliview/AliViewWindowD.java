@@ -40,6 +40,7 @@ public class AliViewWindowD extends AliViewWindow {
   protected Logger         loggerP4J;
 
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
+
   
   //private ScrollBarModelSyncChangeListenerD scrollBarListenerD; // compile issues 2024-09-21
 
@@ -54,6 +55,11 @@ public class AliViewWindowD extends AliViewWindow {
 
   public void err(String msg) {System.out.println("AliViewWindowD error: " + msg);} // probably remap to Logger
   public void msg(String msg) {System.out.println("AliViewWindowD msg: "   + msg);}
+
+  //public static void createNewAliViewWindowD() {
+  //  msg("createNewAliViewWindowD called");
+  //  createNewAliViewWindow();
+  //}
 
   //////////////////// AliView Window : Distributed & Py4j extensions (perhaps rename with DP suffix) //////////////////// 
 

@@ -532,7 +532,7 @@ public class AliView implements ApplicationListener{
 		return activeWindow;
 	}
 
-	private static void createNewAliViewWindowD(final File alignmentFile){
+	protected static void createNewAliViewWindowD(final File alignmentFile) {
 
 		try {
 
