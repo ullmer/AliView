@@ -9,7 +9,18 @@ import org.apache.log4j.Logger;
 import aliview.gui.AliViewJMenuBarFactory;
 import aliview.alignment.Alignment;
 
+import py4j.Gateway;
+import py4j.GatewayServer;
+import py4j.CallbackClient;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+//////////////////// AliView Window : Distributed & Py4j extensions (perhaps rename with DP suffix) //////////////////// 
+
 public class AliViewWindowD extends AliViewWindow {
+  protected boolean py4jActivated = true;
+
   private static final Logger loggerD = Logger.getLogger(AliViewWindow.class);
   
   private ScrollBarModelSyncChangeListenerD scrollBarListenerD;
@@ -17,6 +28,12 @@ public class AliViewWindowD extends AliViewWindow {
   public AliViewWindowD(File alignmentFile, AliViewJMenuBarFactory menuBarFactory) {
     super(alignmentFile, menuBarFactory);
     loggerD.info("AliViewWindowD invoked");
+
+    if (py4jActivated) {launchPy4jServer();}
+  }
+
+  public void launchPy4jServer() {
+
   }
 
   public void moveCursorUp(boolean isShiftDown)    {super.moveCursorUp(isShiftDown);    loggerD.info("AVWD moveCursorUp");}
