@@ -86,20 +86,21 @@ public class AliViewWindowD extends AliViewWindow {
   public void moveCursorLeft(boolean isShiftDown)  {super.moveCursorLeft(isShiftDown);  loggerD.info("AVWD moveCursorLeft");}
   public void moveCursorRight(boolean isShiftDown) {super.moveCursorRight(isShiftDown); loggerD.info("AVWD moveCursorRight");}
 
-  Action closeWinAction = new AbstractAction() {
-     public void actionPerformed(ActionEvent e) {
-       AliView.closeWindow(aliViewWindowD);
-     }
-  };
+//  Action closeWinAction = new AbstractAction() { //compile issues 2024-09-21
+//     public void actionPerformed(ActionEvent e) {
+//       AliView.closeWindow(aliViewWindowD);
+//     }
+//  };
 
   //private void initWindow(Alignment newAlignment) {
-  protected void initWindow(Alignment newAlignment) {
-    loggerD.info("AliViewWindowD initWindow intercept called");
-    super.initWindow(newAlignment);
-    scrollBarListenerD = new ScrollBarModelSyncChangeListenerD(listScrollPane.getVerticalScrollBar().getModel());
-    alignmentScrollPane.getVerticalScrollBar().getModel().addChangeListener( scrollBarListenerD );
-    sequenceJList.addSynchPanes(listScrollPane, alignmentScrollPane);
-  }
+
+//  protected void initWindow(Alignment newAlignment) { //compile issues 2024-09-21
+//    loggerD.info("AliViewWindowD initWindow intercept called");
+//    super.initWindow(newAlignment);
+//    scrollBarListenerD = new ScrollBarModelSyncChangeListenerD(listScrollPane.getVerticalScrollBar().getModel());
+//    alignmentScrollPane.getVerticalScrollBar().getModel().addChangeListener( scrollBarListenerD );
+//    sequenceJList.addSynchPanes(listScrollPane, alignmentScrollPane);
+//  }
 
 /*
   public void zoomInAt(Point mousePos){
