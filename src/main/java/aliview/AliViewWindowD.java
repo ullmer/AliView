@@ -12,6 +12,8 @@ import javax.swing.AbstractAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import java.awt.Color;
 
 import aliview.gui.AliViewJMenuBarFactory;
 import aliview.alignment.Alignment;
@@ -93,6 +95,16 @@ public class AliViewWindowD extends AliViewWindow {
   public void moveCursorDown(boolean isShiftDown)  {super.moveCursorDown(isShiftDown);  loggerD.info("AVWD moveCursorDown");}
   public void moveCursorLeft(boolean isShiftDown)  {super.moveCursorLeft(isShiftDown);  loggerD.info("AVWD moveCursorLeft");}
   public void moveCursorRight(boolean isShiftDown) {super.moveCursorRight(isShiftDown); loggerD.info("AVWD moveCursorRight");}
+
+  public void setSize(int w, int h) {
+    Dimension d = new Dimension(w, h);
+    setSize(d);
+  }
+
+  public void setBackground(int r, int g, int b, int a) {
+    Color c = new Color(r,g,b,a);
+    setBackground(c);
+  }
 
 //  Action closeWinAction = new AbstractAction() { //compile issues 2024-09-21
 //     public void actionPerformed(ActionEvent e) {
