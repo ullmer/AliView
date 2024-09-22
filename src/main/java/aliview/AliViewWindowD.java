@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
 import py4j.Gateway;
 import py4j.GatewayServer;
 import py4j.CallbackClient;
+import py4j.Py4JPythonClient;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -33,7 +34,8 @@ import java.net.UnknownHostException;
 public class AliViewWindowD extends AliViewWindow {
   protected boolean py4jActivated = true;
   protected boolean verbose       = true;
-  protected String         p4jServerIpAddressStr = "172.25.49.14"; // obviously requires more graceful integration 
+  //protected String         p4jServerIpAddressStr = "172.25.49.14"; // obviously requires more graceful integration 
+  protected String         p4jServerIpAddressStr = "0.0.0.0"; 
   protected InetAddress    p4jServerIpAddress;
   protected GatewayServer  p4jGwServer;
   protected CallbackClient p4jCbClient;
