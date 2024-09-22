@@ -43,8 +43,24 @@
              </excludes>
          </resource>
     </resources>
-
     <plugins>
+       <plugin>
+        <artifactId>py4j</artifactId>
+	<version>0.10.9.7</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
        <plugin>
          <groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-resources-plugin</artifactId>
@@ -288,6 +304,7 @@
                         <include>**/commons-lang</include>
                         <include>**/commons-io</include>
                         <include>**/log4j</include>
+                        <include>**/py4j</include>
                     </includes>
                  </fileset>
                </filesets>
@@ -295,15 +312,13 @@
          </execution>
        </executions>
      </plugin>
-
-
    </plugins>
   </build>
   <dependencies>
     <dependency>
-      <groupId>py4j</groupId>
+      <groupId>net.sf.py4j</groupId>
       <artifactId>py4j</artifactId>
-      <version>4.13.2</version>
+      <version>0.10.9.7</version>
       <systemPath>${user.home}/.local/share/py4j/py4j0.10.9.7.jar</systemPath>
       <scope>system</scope>
     </dependency>
