@@ -1,0 +1,284 @@
+# Py4j-exposed AliView methods
+
+# Many method calls likely sourcing from more generic (e.g., Java AWT?) classes; 
+#   these perhaps should be separated and accessed via an inheritance mechanism
+
+# Many of these should perhaps not be externally callable.  Contemplating !/etc. prefix to expose/hide to external access
+
+# Grouped by Brygg Ullmer, Clemson University
+# Begun 2024-09-22
+
+actions:
+  core:  ##################################################
+    add: #-------------------------------------------------
+      general: [add,            addAndAlignMultipleSeqFromClipOneByOne, adjustReadingFrameMinimizeStop, 
+                addNewSequence, addNotify,                              addOrRemoveSelectionToExcludes]
+
+      from:    [addAndAlignSeqFromClipboard, addAndAlignSeqFromFile, addSequencesFromFile]
+
+      listener:
+        [addComponentListener,   addContainerListener,   addFocusListener,          addHierarchyBoundsListener,  
+         addHierarchyListener,   addInputMethodListener, addKeyListener,            addMouseListener, 
+         addMouseMotionListener, addMouseWheelListener,  addPropertyChangeListener, 
+         addWindowFocusListener, addWindowListener,      addWindowStateListener]
+
+    get: #-------------------------------------------------
+      alignment: [getAlignment, getAlignmentX, getAlignmentY]
+
+      component: [getComponent, getComponentAt, getComponentCount, getComponentListeners, 
+                  getComponentOrientation, getComponentZOrder, getComponents]
+
+      focus:     [getFocusCycleRootAncestor, getFocusListeners, getFocusOwner, getFocusTraversalKeys, 
+                  getFocusTraversalKeysEnabled, getFocusTraversalPolicy, getFocusableWindowState]
+
+      input:     [getInputContext, getInputMethodListeners, getInputMethodRequests]
+
+      listener: [getContainerListeners,           getHierarchyBoundsListeners, getHierarchyListeners,
+                 getKeyListeners,            getListeners, 
+                 getMouseListeners,          getMouseMotionListeners, getMouseWheelListeners, 
+                 getPropertyChangeListeners,      
+                 getWindowFocusListeners,    getWindowListeners,          getWindowStateListeners]
+
+      general:  [getAccessibleContext,      getAliMenuBar,  getAliViewWindowGlassPane,  getBackground,  getBaseline, 
+                 getBaselineResizeBehavior, getBounds,      getBufferStrategy,          getClass,       getClipboard, 
+                 getColorModel,             getContentPane, getCursor,                  getCursorType, 
+                 getDefaultCloseOperation,  getDropTarget,  getExtendedState, getFont,  getFontMetrics, getForeground, 
+                 getFrames, getGlassPane,   getGraphics,    getGraphicsConfiguration,   getHeight,      getIconImage, 
+                 getIconImages,             getIgnoreRepaint, getInsets,  getJMenuBar,  getLastPaneEndTime, 
+                 getLayeredPane,            getLayout,        getLocale,  getLocation,  getLocationOnScreen, 
+                 getMaximizedBounds,        getMaximumSize,   getMenuBar, getMinimumSize, 
+                 getModalExclusionType,     getMostRecentFocusOwner,      getMousePosition, 
+                 getName,                   getOpacity,       getOwnedWindows,          getOwner, getOwnerlessWindows, 
+                 getParent,                 getPreferredSize, getRootPane,    getShape, getSize,  getState, 
+                 getTitle,       getToolkit, getTransferHandler, getTreeLock, getType,  getUndoControler, 
+                 getWarningString, getWidth, getWindows,         getX, getY]
+
+    set: #-------------------------------------------------
+      color:     [setColorSchemeAminoAcid,  setColorSchemeNucleotide, setBackground, setForeground]
+      component: [setComponentOrientation,  setComponentZOrder]
+      default:   [setDefaultCloseOperation, setDefaultLookAndFeelDecorated]
+      focus:     [setFocusCycleRoot,        setFocusTraversalKeys,           setFocusTraversalKeysEnabled, 
+                  setFocusTraversalPolicy,  setFocusTraversalPolicyProvider, setFocusable, setFocusableWindowState]
+      font:      [setFont, setFontCaseUpper]
+      highlight: [setHighlightConsensus,    setHighlightDiff,                setHighlightNonConsensus]
+      icon:      [setIconImage,             setIconImages]
+      location:  [setLocation,              setLocationByPlatform,           setLocationRelativeTo]
+      selection: [setSelectionAsCoding,     setSelectionAsNonCoding]
+      size:      [setMaximizedBounds,       setMaximumSize, setMinimumSize,  setPreferredSize, setResizable, setSize]
+
+      general:   [setAlwaysOnTop, setAutoRequestFocus, setBounds, setContentPane, setCursor, 
+                  setDifferenceTraceSequence, setDropTarget, setEditMode, setEnabled, 
+                  setExtendedState, setGeneticCode, setGlassPane, setIgnoreRepaint, setJMenuBar, 
+                  setLayeredPane, setLayout, setLocale, setMenuBar, setMixingCutoutShape, setModalExclusionType, 
+                  setName, setOpacity, setReadingFrame, setShape, setShowTranslation, 
+                  setState, setTitle, setTransferHandler, setType, setUndecorated, setVisible]
+ 
+    is: #-------------------------------------------------
+      focus:   [isFocusCycleRoot,          isFocusOwner, isFocusTraversable, isFocusTraversalPolicyProvider, 
+                isFocusTraversalPolicySet, isFocusable,  isFocusableWindow,  isFocused]
+
+      general: [isActive,           isAlwaysOnTop, isAlwaysOnTopSupported,        isAncestorOf,     isAutoRequestFocus, 
+                isBackgroundSet,    isCursorSet,   isDefaultLookAndFeelDecorated, isDisplayable,    isDoubleBuffered, 
+                isEditMode,         isEmpty,       isEnabled,                     isFontSet,        isForegroundSet,  
+                isLightweight,      isLocationByPlatform,       isMaximumSizeSet, isMinimumSizeSet, isOpaque, 
+                isPreferredSizeSet, isRedoStackEmpty,           isResizable,      isReverseHorizontalRotation, 
+                isReverseVerticalRotation,                      isShowing,        isUndecorated, 
+                isUndoStackEmpty,   isValid,    isValidateRoot, isVisible]
+
+    remove: #-------------------------------------------------
+      listener: [removeComponentListener,       removeContainerListener,   removeFocusListener, 
+                 removeHierarchyBoundsListener, removeHierarchyListener,   removeInputMethodListener, 
+                 removeKeyListener, 
+                 removeMouseListener,           removeMouseMotionListener, removeMouseWheelListener, 
+                 removeWindowFocusListener,     removeWindowListener,      removeWindowStateListener]
+                 removePropertyChangeListener]
+
+      general: [remove, removeAll, removeNotify]
+
+    clear: [clearSelectedBases, clearSelection]
+
+    copy:  [copyNames, copySelectionAsFasta, copySelectionAsNucleotides]
+
+    delete: [deleteAllGaps,  deleteEmptySequences, deleteExludedBases, deleteGapMoveLeft, deleteGapMoveRight, 
+             deleteSelected, deleteVerticalGaps]
+
+    edit:   [editAlignerADDSettings, editAlignerALLSettings, editCharsets, editExternalCommands]
+
+    event:  [deliverEvent, dispatchEvent, handleEvent, postEvent]
+
+    export: [exportRaxMLFile, exportRaxMLFileViaChooser]
+
+    file:   [fileDropped, filesDropped]
+
+    find:   [find, findComponentAt, findNamesFromClipboard, findPrimerInCurrentSelection, findPrimerSettings]
+
+    insert: [insertGapMoveLeft, insertGapMoveRight]
+
+    key:    [keyDown, keyUp]
+
+    mouse:  [mouseDown, mouseDrag, mouseEnter, mouseExit, mouseMove, mouseUp]
+      
+    log:    [logAllLogs, logScrollPane]
+
+    move:   [move, moveCursorDown, moveCursorLeft, moveCursorRight, moveCursorUp, moveSelectedDown, moveSelectedTo, 
+             moveSelectedToBottom, moveSelectedToTop, moveSelectedUp, moveSelectionLeft, moveSelectionRight]
+
+    notify: [notify, notifyAll]
+
+    open:   [openBugReportPage, openHelp, openPreferencesGeneral]
+
+    paint:  [paint, paintAll, paintComponents]
+
+    print:  [print, printAlignment, printAll, printComponents]
+
+    realign: [reAlignEverythingAsTranslatedAA, reAlignEverythingWithAlignCommand, 
+              reAlignEverythingWithDefaultProgram, reAlignSelectedSequences, reAlignSelectionInSeparateThread]
+
+    request: [requestEditMode,            requestFocus,       requestFocusInWindow, requestGB, 
+              requestPaneAndRulerRepaint, requestPaneRepaint, requestReloadWindow,  requestRepaintAndRevalidateALL, 
+              requestRepaintRect,         requestScrollToVisibleSelection,          requestWindowClose]
+
+    rc:      [reverseComplementAlignment, reverseComplementClipboard, reverseComplementSelectedSequences]
+
+    run:     [runExternalCommand, runExternalCommandImplementation]
+
+    save:    [saveAlignmentAsFile, saveAlignmentAsFileViaChooser,      saveAlignmentFile, 
+              saveFastaIndex,      saveSelectionAsFastaFileViaChooser, saveWindowGeometry]
+ 
+    scroll:  [scrollToCursor, scrollToPos, scrollToVisibleCursor]
+
+    selection: [expandSelectionDown, expandSelectionLeft, expandSelectionRight, expandSelectionTop, 
+                invertSelection, selectAll, selectDuplicates, selectEverythingWithinGaps, selectionChanged]
+
+    show:      [show, showAbout, showCharsetsRuler, showMessageLog]
+    sort:      [sortSequencesByCharColumn, sortSequencesByName]
+    to:        [toBack, toFront, toString]
+    toggle:    [toggleDrawAminoAcidCode, toggleDrawCodonpos, toggleIgnoreGapInTranslation, toggleTranslationShowBoth]
+    transfer:  [transferFocus, transferFocusBackward, transferFocusDownCycle, transferFocusUpCycle]
+    zoom:      [zoomIn, zoomInAt, zoomOut, zoomOutAt]
+
+    general: 
+      [alignAndAddSequences, alignmentMetaChanged, applyComponentOrientation, applyResourceBundle, areFocusTraversalKeysSet, 
+       bounds, changeAlignmentType, checkImage, checkNewVersion, complementAlignment, contains, contentsChanged, 
+       countComponents, countStopCodons, createBufferStrategy, createImage, createOrUpdateDynamicLoadFileMenu, 
+       createStats, createVolatileImage, decReadingFrame, disable, displayVersionHistory, dispose, doLayout, enable, 
+       enableInputMethods, equals, err, firePropertyChange, flushAllLogs, goToPos, gotFocus, hasFocus, hashCode, 
+       hide, imageUpdate, incReadingFrame, insets, inside, intervalAdded, intervalRemoved, invalidate, launchPy4jServer, 
+       layout, list, loadNewAlignmentFile, locate, location, lostFocus, merge2SelectedSequences, minimumSize, 
+       missingToGAP, mntmToggleTranslationOnePos, msg, newSequences, nextFocus, pack, pasteFasta, performFind, 
+       phenotype2genotype, preferredSize, prepareImage, pushUndoState, redo, reloadCurrentFile, renameFirstSelected, 
+       repaint, replaceSelectedWithChar, reshape, resize, restoreWindowGeometry, revalidate, size, startDebug, 
+       terminalGAPtoMissing, trimSequences, undo, update, updateWindowTitle, validate, wait, 
+
+  alignment:  ##################################################
+
+    add: #-------------------------------------------------
+      listener: [addAlignmentDataListener, addAlignmentListener, addAlignmentSelectionListener]
+      general:  [addFasta, addNewSequence, addOrRemoveSelectionToExcludes, addSelectionToExcludes, addSequences]
+
+    get: #-------------------------------------------------
+      alignment: [getAlignentMetaCopy, getAlignmentFile, getAlignmentMeta]
+      file:      [getFileFormat,       getFileName]
+      first:     [getFirstAlignmentProgInvalidCharacter, getFirstSelectedPosition, getFirstSelectedPositionX, 
+                  getFirstSelectedSequenceIndex, getFirstSelectedSequenceName,     getFirstSelectedUngapedPositionX]
+      selected:  [getSelectedBasesCount, getSelectedCharsets, getSelectedColumnCount, getSelectedSequences, 
+                  getSelectedSequencesCount, getSelectionAsMinRect, getSelectionAt, getSelectionSize]
+      sequence:  [getSequenceByID, getSequenceByName, getSequenceIndex, getSequences]
+
+      general:   [getAllCodonPositions, getApproximateMemorySizeMB, getBaseAt, getClass, 
+                  getCodonPosAt, getConsensus, getGeneticCode, getHistogram, getLengthAt, 
+                  getLongestSequenceLength, getLongestSequenceName, getMaxX, getMaxY, 
+                  getMaximumSequenceLength, getReadingFrame, getSize, getStats, getTempSelection, 
+                  getTranslatedAminoAcidAtNucleotidePos]
+    
+    set: #-------------------------------------------------
+      alignment: [setAlignentMeta, setAlignmentFile, setAlignmentFormat]
+      edit:      [setEditMode, setEditedAfterLastSave]
+      selection: [setSelectionAsCoding, setSelectionAsNonCoding, setSelectionAt, setSelectionWithin]
+      general:   [setAllHorizontalSelectionAt, setFirstSelectedSequenceName, setGeneticCode, setNewSequencesFromUndo, 
+                  setReadingFrame, setTempSelection, setTranslationOnePos]
+
+    clear:  [clearColumnSelection, clearFindLastPos, clearSelectedBases, clearSelection, 
+             clearSelectionOffset, clearTempSelection]
+
+    copy:   [copySelectionFromPosX1toX2, copySelectionFromSequenceTo, copySelectionNames, copySelectionToClipboardAsFasta, 
+             copySelectionToClipboardAsNucleotides]
+
+    delete: [deleteAllExsetBases, deleteAllGaps, deleteEmptySequences, deleteFullySelectedSequences, 
+             deleteGapMoveLeft, deleteGapMoveRight, deleteSelectedBases, deleteSequence, deleteVerticalGaps]
+
+    find:   [findAndSelectInSequences, findDuplicateNames, findInNames, findPrimerInSelection]
+
+    has:    [hasFullySelectedSequences, hasSelection]
+
+    insert: [insertGapLeftOfSelectionMoveRight, insertGapRightOfSelectionMoveLeft]
+
+    is:     [isAAAlignment,    isBaseSelected, isEditMode,      isEditable,            isEditedAfterLastSave, 
+             isEmptyAlignment, isExcluded,     isFileSequences, isFullCodonStartingAt, isMoveSelectionLeftPossible, 
+             isMoveSelectionRightPossible,     isNucleotideAlignment, isPositionValid, isSelectable, 
+             isSequencesEqualLength,           isTranslatedOnePos,    isUndoable,      isUnknownAlignment]
+
+    move:   [moveSelectedSequencesDown,  moveSelectedSequencesTo, moveSelectedSequencesToBottom, 
+             moveSelectedSequencesToTop, moveSelectedSequencesUp, moveSelection, moveSelectionLeft, 
+             moveSelectionRight]
+
+    replace: [replaceSelectedCharactersWithThis, replaceSelectedWithChar]
+    rc:      [reverseComplementAlignment, reverseComplementFullySelectedSequences]
+
+    notify: [notify, notifyAll]
+
+    save:   [saveAlignmentAsFile, saveFastaIndex, saveSelectedSequencesAsFastaFile, saveSelectionAsFastaFile, 
+             saveUnSelectedSequencesAsFastaFile]
+
+    select: [selectAll, selectColumn, selectDuplicateNamesSequences, selectDuplicates, selectEverythingWithinGaps, 
+             selectIndices, selectSequencesWithIndex, selectionExtendDown, selectionExtendLeft, selectionExtendRight, 
+             selectionExtendTop]
+
+    sort:    [sortSequencesByCharInSelectedColumn, sortSequencesByName, sortSequencesByThisModel]
+
+    general: [complementAlignment,         countStopCodons, decReadingFrame,   equals, exportPartitionsFileRaxMLFormat, 
+              fileSequenceContentsChanged, hashCode,        incReadingFrame,   invertSelection, 
+              leftPadSequencesWithGapUntilEqualLength,      mergeTwoSequences, missingToGAP, padAndTrimSequences, 
+              realignNucleotidesUseThisAAAlignmentAsTemplate,                  removeSelectionFromExcludes, 
+              rightPadSequencesWithGapUntilEqualLength,     storeAlignmetAsFasta, 
+              terminalGAPtoMissing,                         toString,          trimSequences, wait]
+
+  sequences:  ##################################################
+
+    get: #-------------------------------------------------
+      alignment: [getAlignmentMeta, getAlignmentSelectionModel]
+      copy:      [getCopy, getCopyShallow]
+      delegates: [getDelegateSequences, getDelegateSequencesCopy]
+      first:     [getFirstSelected, getFirstSelectedName, getFirstSelectedPos, getFirstSelectedSequenceIndex, 
+                  getFirstSelectedUngapedPos, getFirstSelectedWholeColumn]
+      indices:   [getIndicesOfSequencesWithAllSelected, getIndicesOfSequencesWithSelection]
+      last:      [getLastSelectedPos, getLastSelectedSequenceIndex, getLastSelectedWholeColumn]
+      length:    [getLengthAt, getLongestSequenceLength, getLongestSequenceName]
+      selection: [getSelectedColumnCount, getSelectedSequences, getSelectedSequencesCount, getSelectionAsNucleotides, 
+                  getSelectionBounds, getSelectionNames, getSelectionSize]
+      sequence:  [getSequenceByID, getSequenceByName, getSequenceType, getSequencesByName]
+
+      general:   [get, getBaseAt, getClass, getConsensus, getElementAt, getFileFormat, getFullySelectedSequences, 
+                  getHistogram, getShortestSequenceLength, getSize, getTempSelection, getTranslatedAminoAcidAtNucleotidePos]
+
+    add:    [add, addAlignmentDataListener, addAlignmentSelectionListener, addAll, addListDataListener]
+    clear:  [clearAllSelectionInSequenceWithIndex, clearColumnSelection, clearSequenceSelection, 
+             clearTempSelection]
+    copy:   [copySelectionFromInto, copySelectionFromPosX1toX2]
+    delete: [deleteAllGaps, deleteBasesInAllSequencesFromMask, deleteEmptySequences, deleteFullySelectedSequences, 
+             deleteGapMoveLeft, deleteGapMoveRight, deleteSelectedBases, deleteSequence, deleteSequences]
+    find:   [findAndSelect, findAndSelectALLInAASequences, findAndSelectDuplicates, findAndSelectInAASequences, 
+             findAndSelectInNucleotideSequences, findDuplicateNames, findDuplicates, findInNames]
+    has:    [hasFullySelectedSequences, hasSelection]
+    invert: [insertGapLeftOfSelectedBase, insertGapRightOfSelectedBase, invertSelection]
+    is:     [isBaseSelected, isEditable, isEqualLength, isGapOrEndPresentRightOfSelection, isGapPresentLeftOfSelection, 
+             isGapPresentRightOfSelection, isPositionValid, isTranslated]
+
+, hashCode, indexOf, 
+
+
+iterator, leftPadWithGapUntilEqualLength, mergeTwoAminoAcidSequences, mergeTwoNucleotideSequences, mergeTwoSequences, missingToGAP, moveSelectedResiduesIfGapIsPresent, moveSelectedResiduesLeftIfGapIsPresent, moveSelectedResiduesRightIfGapIsPresent, moveSelectedSequencesDown, moveSelectedSequencesTo, moveSelectedSequencesToBottom, moveSelectedSequencesToTop, moveSelectedSequencesUp, moveSequencesDown, moveSequencesTo, moveSequencesToBottom, moveSequencesToTop, moveSequencesUp, notify, notifyAll, rangeCheck, realignNucleotidesUseTheseAASequenceAsTemplate, removeAlignmentDataListener, removeListDataListener, replaceSelectedBasesWithGap, replaceSelectedCharactersWithThis, replaceSelectedWithChar, reverseComplement, reverseComplementFullySelectedSequences, rightPadWithGapUntilEqualLength, rightTrimSequencesRemoveGapsUntilEqualLength, selectAll, selectColumn, selectDuplicateNamesSequences, selectEverythingWithinGaps, selectSequenceWithIndex, selectSequencesByName, selectSequencesWithIndex, selectionExtendDown, selectionExtendLeft, selectionExtendRight, selectionExtendTop, set, setAlignment, setFileFormat, setFirstSelectedName, setSelectionAt, setSelectionOffset, setSelectionWithin, setSequenceType, setSequences, setTempSelection, setTranslation, size, sortSequencesByCharInSelectedColumn, sortSequencesByName, sortSequencesByThisModel, spliterator, terminalGAPtoMissing, toString, wait, writeSelectedSequencesAsFasta, writeSelectionAsFasta, writeUnSelectedSequencesAsFasta
+
+    general: [complement, equals, forEach, 
+
+### end ###
